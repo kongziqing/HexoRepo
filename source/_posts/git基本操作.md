@@ -3,13 +3,13 @@ title: git基本操作
 author: ziqing
 top: true
 cover: true
-toc: false
+toc: true
 mathjax: false
-summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-categories: 分类
+summary: git基本操作
+categories: git
 tags:
-  - Typora
-  - 标签
+  - git
+  - 版本控制
 date: 2020-03-27 23:26:25
 img:
 coverImg:
@@ -78,7 +78,8 @@ git commit
 若直接
 vi code3.txt
 rm code3.txt
-它没有被add到暂存区，git是无法跟踪这个文件的。删除了之后只能由硬盘扫描器搜索出来，没有其他方法。一般这种软件是收费的
+它没有被add到暂存区，git是无法跟踪这个文件的。删除了之后只能由硬盘扫描器
+搜索出来，没有其他方法。一般这种软件是收费的
 ```
 
 
@@ -108,7 +109,8 @@ $ git log
 (1)
 若想回到某一个版本，可以使用如下命令：
 $git reset -- hard HEAD^
-其中HEAD表示当前最新版本，HEAD^表示当前版本的前一个版本，HEAD^^表示当前版本的前前个版本，
+其中HEAD表示当前最新版本，HEAD^表示当前版本的前一个版本，
+HEAD^^表示当前版本的前前个版本，
 也可以使用HEAD~1 表示当前版本的前一个版本，
 HEAD~100表示当前版本的前100版本
 
@@ -163,7 +165,8 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 
-此处需要注意，我们创建了code2.txt，但是没有将其git add 暂存区，所以git会提醒我们将其添加到暂存区。
+此处需要注意，我们创建了code2.txt，但是没有将其git add 暂存区，所以git会提醒
+我们将其添加到暂存区。
 
 
 (5)注意，当提交了新的版本，工作区便无文件要提交，此时提示工作区为干净的
@@ -265,7 +268,8 @@ nothing to commit, working tree clean
 ```
 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，
 用命令git checkout -- file
-场景2：当你不但该乱了工作区某个文件的内容，还添加到了暂存区，想丢弃修改，分两步，第一步用命令git reset HEAD file。就回到了场景1，第二部按场景1操作。
+场景2：当你不但该乱了工作区某个文件的内容，还添加到了暂存区，想丢弃修改，分两步，
+第一步用命令git reset HEAD file。就回到了场景1，第二部按场景1操作。
 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节。
 ```
 ### 对比文件的不同
@@ -275,7 +279,8 @@ nothing to commit, working tree clean
 加入一行 new line
 
 
-(2)现在要对比工作区中code.txt和HEAD版本中code.txt的不同，使用如下命令git diff HEAD -- code.txt
+(2)现在要对比工作区中code.txt和HEAD版本中code.txt的不同，使用如下命令
+git diff HEAD -- code.txt
 
 
 孔子@DESKTOP-SV0VDD2 MINGW64 /d/shiyanlou/Git- (master)
@@ -351,7 +356,8 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 
 
-这个时候，git直到了删除了文件，因此，工作区和版本库就不一样了。git status 命令会立刻提示哪些文件被删除了。
+这个时候，git直到了删除了文件，因此，工作区和版本库就不一样了。
+git status 命令会立刻提示哪些文件被删除了。
 
 若又不想删除这个文件，该如何撤回呢？可以输入命令
 git checkout -- code2.txt
@@ -368,7 +374,9 @@ $ ls
 code.txt  code2.txt
 
 
-(2) 现在你有两种选择，一是确实要从版本库中删除该文件，那就用命令git rm删除，并且git commit
+(2) 现在你有两种选择，
+一是确实要从版本库中删除该文件，那就用命令
+git rm删除，并且git commit
 
 孔子@DESKTOP-SV0VDD2 MINGW64 /d/shiyanlou/Git- (master)
 $ git rm code2.txt
@@ -439,5 +447,9 @@ a4d2662fc607848295c3663497c3e1fd05584923 版本2
 
 ### 小结
 ```
-命令git rm用于删除一个文件，如果一个文件已经被提交到版本库，那么你句永远不用担心误删，但是要小心，你只能回复文件到最新版本，你会丢失最近一次提交后你修改的内容。
+命令git rm用于删除一个文件，
+如果一个文件已经被提交到版本库，
+那么你句永远不用担心误删，
+但是要小心，你只能回复文件到最新版本，
+你会丢失最近一次提交后你修改的内容。
 ```
