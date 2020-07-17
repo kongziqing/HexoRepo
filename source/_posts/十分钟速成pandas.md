@@ -16,10 +16,11 @@ coverImg:
 password:
 ---
 
-# 生成对象
+### 生成对象
 
 https://www.pypandas.cn/docs/getting_started/dsintro.html#dsintro
-### 用值列表生成Series时，pandas默认自动生成整数索引
+
+用值列表生成Series时，pandas默认自动生成整数索引
 
 
 ```python
@@ -27,36 +28,30 @@ import pandas as pd
 import numpy as np
 s=pd.Series([1,3,5,np.nan,6,8])
 s
+
+
+  0    1.0
+  1    3.0
+  2    5.0
+  3    NaN
+  4    6.0
+  5    8.0
+  dtype: float64
+
 ```
 
-
-
-
-    0    1.0
-    1    3.0
-    2    5.0
-    3    NaN
-    4    6.0
-    5    8.0
-    dtype: float64
-
-
-
-### 用含日期时间索引与标签的numpy数组生成dataframe
+用含日期时间索引与标签的numpy数组生成dataframe
 
 
 ```python
 dates = pd.date_range('20130101',periods=6)
 dates
+
+
+  DatetimeIndex(['2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04',
+                    '2013-01-05', '2013-01-06'],
+                    dtype='datetime64[ns]', freq='D')
 ```
-
-
-
-
-    DatetimeIndex(['2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04',
-                   '2013-01-05', '2013-01-06'],
-                  dtype='datetime64[ns]', freq='D')
-
 
 
 
@@ -141,8 +136,7 @@ df
 
 
 
-### 用Series字典对象生成DataFrame
-
+用Series字典对象生成DataFrame
 
 ```python
 df2 = pd.DataFrame({'A': 1.,
@@ -231,9 +225,6 @@ df2
 
 ```python
 df2.dtypes
-```
-
-
 
 
     A           float64
@@ -243,11 +234,11 @@ df2.dtypes
     E          category
     F            object
     dtype: object
-
+```
 
 
 ### 查看数据
-#### 下列代码说明如何查看DataFrame头部和尾部数据：
+下列代码说明如何查看DataFrame头部和尾部数据：
 
 
 ```python
@@ -411,10 +402,10 @@ df.columns
 
 
 
-### DataFrame.to_numpy()由底层数据的Numpy对象，注意，DataFrame的列由多种数据类型组成的，该操作耗费系统资源较大，这也是Pandas和Numpy的本质区别：Numpy数组只有一种数据类型，DataFrame每列的数据类型各不相同，调用DataFrame。to_numpy()时，Pandas查找支持DataFrame里所有数据类型的Numpy数据类型，还有一种数据类型是object，可以把DataFrame列里的值强制转换为Python对象
+DataFrame.to_numpy()由底层数据的Numpy对象，注意，DataFrame的列由多种数据类型组成的，该操作耗费系统资源较大，这也是Pandas和Numpy的本质区别：Numpy数组只有一种数据类型，DataFrame每列的数据类型各不相同，调用DataFrame。to_numpy()时，Pandas查找支持DataFrame里所有数据类型的Numpy数据类型，还有一种数据类型是object，可以把DataFrame列里的值强制转换为Python对象
 
 
-### 下面的df这个DataFrame里的值都是浮点数，DataFrame.to_numpy()的操作会很快，而且不复制数据
+下面的df这个DataFrame里的值都是浮点数，DataFrame.to_numpy()的操作会很快，而且不复制数据
 
 
 ```python
@@ -433,7 +424,7 @@ df.to_numpy()
 
 
 
-### df2这个DataFrame包含了多种类型，DataFrame.to_numpy()操作就会耗费较多资源
+df2这个DataFrame包含了多种类型，DataFrame.to_numpy()操作就会耗费较多资源
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy
 
@@ -453,7 +444,7 @@ df2.to_numpy()
 
 
 
-### 提醒：DataFrame.to_numpy()的输出不包含行索引和列标签
+提醒：DataFrame.to_numpy()的输出不包含行索引和列标签
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy
 
 ### describe()可以快速查看数据的统计摘要：
@@ -801,15 +792,15 @@ df.sort_values(by='B')
 
 ### 选择
 
-### 提醒：选择、设置标准Python、Numpy的表达式已经非常直观，交互也很方便，但对于生产代码，我们还是推荐优化过的Pandas数据访问方法：.at,.iat,.loc,.iloc
+提醒：选择、设置标准Python、Numpy的表达式已经非常直观，交互也很方便，但对于生产代码，我们还是推荐优化过的Pandas数据访问方法：.at,.iat,.loc,.iloc
 
-#### 详见索引与选择数据、多层索引与高级索引文档
+详见索引与选择数据、多层索引与高级索引文档
 https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#indexing
 https://pandas.pydata.org/pandas-docs/stable/user_guide/advanced.html#advanced
 
 ### 获取数据
 
-#### 选择单列，产生Seri，与df.A等效
+选择单列，产生Seri，与df.A等效
 
 
 ```python
@@ -954,9 +945,9 @@ df['20130102':'20130104']
 ### 按标签选择
 https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#indexing-label
 
-#### 详见按标签选择
+详见按标签选择
 
-#### 用标签提取一行数据
+用标签提取一行数据
 
 
 ```python
@@ -974,7 +965,7 @@ df.loc[dates[0]]
 
 
 
-#### 用标签选择多列数据
+用标签选择多列数据
 
 
 ```python
@@ -1043,7 +1034,7 @@ df.loc[:,['A','B']]
 
 
 
-### 用标签切片，包含行与列结束点
+用标签切片，包含行与列结束点
 
 
 ```python
@@ -1163,7 +1154,7 @@ df.iloc[3]
 
 
 
-#### 类似Numpy、Python，用整数切片：
+类似Numpy、Python，用整数切片：
 
 
 ```python
@@ -1212,7 +1203,7 @@ df.iloc[3:5,0:2]
 
 
 
-#### 显式整行切片
+显式整行切片
 
 
 ```python
@@ -1267,7 +1258,7 @@ df.iloc[1:3,:]
 
 
 
-#### 显式整列切片
+显式整列切片
 
 
 ```python
@@ -1336,7 +1327,7 @@ df.iloc[:,1:3]
 
 
 
-#### 显示提取值
+显示提取值
 
 
 ```python
@@ -1350,7 +1341,7 @@ df.iloc[1,1]
 
 
 
-#### 快速访问标量，与上述方法等效
+快速访问标量，与上述方法等效
 
 
 ```python
@@ -1684,7 +1675,7 @@ df2[df2['E'].isin(['two','four'])]
 
 #### 赋值
 
-#### 用索引自动对齐新增列的数据
+用索引自动对齐新增列的数据
 
 
 ```python
@@ -1709,7 +1700,7 @@ s1
 
 
 
-#### 按标签赋值
+按标签赋值
 
 
 ```python
@@ -1797,14 +1788,14 @@ df
 
 
 
-#### 按位置赋值
+按位置赋值
 
 
 ```python
 df.iat[0,1]=0
 ```
 
-#### 按Numpy数组赋值
+按Numpy数组赋值
 
 
 ```python
@@ -1892,7 +1883,7 @@ df
 
 
 
-#### 用where条件赋值
+用where条件赋值
 
 
 ```python
@@ -1988,9 +1979,9 @@ df2
 ### 缺失值
 https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html#missing-data
 
-#### pandas主要用np.nan表示缺失值数据。计算时，默认不包含空值，详见缺失数据
+pandas主要用np.nan表示缺失值数据。计算时，默认不包含空值，详见缺失数据
 
-#### 重建索引（reindex）可以更改，添加，删除指定轴的索引，并返回数据副本，即不更改原数据
+重建索引（reindex）可以更改，添加，删除指定轴的索引，并返回数据副本，即不更改原数据
 
 
 ```python
@@ -2070,7 +2061,7 @@ df1
 
 
 
-#### 删除所有含缺失值的行
+删除所有含缺失值的行
 
 
 ```python
@@ -2276,16 +2267,16 @@ pd.isna(df1)
 
 
 
-#### 运算
+### 运算
 
 #### 详见二进制操作
 https://pandas.pydata.org/pandas-docs/stable/getting_started/basics.html#basics-binop
 
 ### 统计
 
-#### 一般情况下，运算时排除缺失值
+ 一般情况下，运算时排除缺失值
 
-##### 描述性统计：
+ 描述性统计：
 
 
 ```python
@@ -2303,7 +2294,7 @@ df.mean()
 
 
 
-##### 在另一个轴（即行）上执行同样的操作
+在另一个轴（即行）上执行同样的操作
 
 
 ```python
@@ -2323,7 +2314,7 @@ df.mean(1)
 
 
 
-#### 不同维度对象运算时，要先对齐，此外，Pandas自动沿指定维度广播
+不同维度对象运算时，要先对齐，此外，Pandas自动沿指定维度广播
 
 
 ```python
@@ -2431,7 +2422,7 @@ df.sub(s,axis='index')
 
 ### Apply函数
 
-##### Apply函数处理数据
+Apply函数处理数据
 
 
 ```python
@@ -2532,7 +2523,7 @@ df.apply(lambda x:x.max()-x.min())
 
 ### 直方图
 
-#### 详见直方图与离散化
+详见直方图与离散化
 https://pandas.pydata.org/pandas-docs/stable/getting_started/basics.html#basics-discretization
 
 
@@ -2581,7 +2572,7 @@ s.value_counts()
 
 ### 字符串方法
 
-#### Series的str属性包含一组字符串处理功能，如下代码所示，注意，str的模式匹配默认使用正则表达式，详见矢量字符串方法
+Series的str属性包含一组字符串处理功能，如下代码所示，注意，str的模式匹配默认使用正则表达式，详见矢量字符串方法
 https://docs.python.org/3/library/re.html
 https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#text-string-methods
 
@@ -2610,13 +2601,13 @@ s.str.lower()
 ### 合并（Merge）
 https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html#merging
 
-#### 结合（Concat）
+结合（Concat）
 
-#### pandas提供了多种将Series、DataFrame对象组合在一起的功能，用索引与关联代数功能的多种设置逻辑可执行连接（join）与合并（merge）操作
+pandas提供了多种将Series、DataFrame对象组合在一起的功能，用索引与关联代数功能的多种设置逻辑可执行连接（join）与合并（merge）操作
 
-###### 详见合并
+详见合并
 
-##### concat()用于连接pandas对象
+concat()用于连接pandas对象
 
 
 ```python
@@ -3033,7 +3024,7 @@ pd.merge(left,right,on='key')
 
 
 
-#### 这里还有一个例子
+这里还有一个例子
 
 
 ```python
@@ -3184,7 +3175,7 @@ pd.merge(left,right,on='key')
 #### 追加（Append）
 https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html#merging-concatenation
 
-#### 为DataFrame追加行
+为DataFrame追加行
 
 
 ```python
@@ -3388,11 +3379,11 @@ df.append(s,ignore_index=True)
 #### 分组（Grouping）
 https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
 
-#### ‘group by’指的是涵盖下列一项或多项步骤的处理流程：
-##### 分割：按条件数据分割成多组
-##### 应用：为每组单独应用函数
-##### 组合：将处理结果组合成一个数据结构
-##### 详见分组
+‘group by’指的是涵盖下列一项或多项步骤的处理流程：
+分割：按条件数据分割成多组
+应用：为每组单独应用函数
+组合：将处理结果组合成一个数据结构
+详见分组
 
 
 ```python
@@ -3551,7 +3542,7 @@ df.groupby('A').sum()
 
 
 
-#### 分列分组后，生成多层索引，也可以应用sum函数：
+分列分组后，生成多层索引，也可以应用sum函数：
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sum.html#pandas.DataFrame.sum
 
 
@@ -3632,7 +3623,7 @@ df.groupby(['A','B']).sum()
 
 ### 重塑（Reshaping）
 
-#### 详见多层索引与重塑
+详见多层索引与重塑
 https://pandas.pydata.org/pandas-docs/stable/user_guide/advanced.html#advanced-hierarchical
 https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html#reshaping-stacking
 
@@ -3876,7 +3867,7 @@ stacked
 
 
 
-#### 压缩后的DataFrame或Series具有多层索引，stack（）的逆操作是unstack()，默认为拆叠最后一层：
+压缩后的DataFrame或Series具有多层索引，stack（）的逆操作是unstack()，默认为拆叠最后一层：
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html#pandas.DataFrame.stack
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.unstack.html#pandas.DataFrame.unstack
 
@@ -4080,7 +4071,7 @@ stacked.unstack(0)
 
 ### 数据透视表（pivot Tables）
 
-#### 详见数据透视表
+详见数据透视表
 https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html#reshaping-pivot
 
 
@@ -4228,7 +4219,7 @@ df
 
 
 
-#### 用上述数据生成数据透视表非常简单
+用上述数据生成数据透视表非常简单
 
 
 ```python
@@ -4322,9 +4313,9 @@ pd.pivot_table(df,values='D',index=['A','B'],columns=['C'])
 
 
 
-#### 时间序列（TimeSeries）
+### 时间序列（TimeSeries）
 
-#### Pandas为频率转换时重采样提供了虽然简单易用，但强大高效的功能，如，将秒级的数据转换为5分钟为频率的数据，这种操作常见于财务应用程序，但又不仅限于此
+Pandas为频率转换时重采样提供了虽然简单易用，但强大高效的功能，如，将秒级的数据转换为5分钟为频率的数据，这种操作常见于财务应用程序，但又不仅限于此
 https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#timeseries
 
 
@@ -4422,7 +4413,7 @@ ts.resample('1Min').sum()
 
 
 
-#### 时区表示
+### 时区表示
 
 
 ```python
@@ -4475,7 +4466,7 @@ ts_utc
 
 
 
-#### 转换成其他时区
+转换成其他时区
 
 
 ```python
@@ -4494,7 +4485,7 @@ ts_utc.tz_convert('US/Eastern')
 
 
 
-#### 转换时间段
+转换时间段
 
 
 ```python
@@ -4564,7 +4555,7 @@ ps.to_timestamp()
 
 
 
-#### Pandas函数可以很方便地转换时间段与时间戳。下例把以11月为结束年份的季度频率转换为下一季度月末上午9点
+Pandas函数可以很方便地转换时间段与时间戳。下例把以11月为结束年份的季度频率转换为下一季度月末上午9点
 
 
 ```python
@@ -4644,7 +4635,7 @@ ts.head()
 
 ### 类别型（Categoricals）
 
-#### Pandas的DataFrame里可以包含类别数据，完整文档详见类别简介和API文档
+Pandas的DataFrame里可以包含类别数据，完整文档详见类别简介和API文档
 https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html#categorical
 https://pandas.pydata.org/pandas-docs/stable/reference/arrays.html#api-arrays-categorical
 
@@ -4717,7 +4708,7 @@ df
 
 
 
-#### 将grade的原生数据转换为类别型数据：
+将grade的原生数据转换为类别型数据：
 
 
 ```python
@@ -4739,7 +4730,7 @@ df["grade"]
 
 
 
-#### 用有含义的名字重命名不同类型，调用Series.cat.categories
+用有含义的名字重命名不同类型，调用Series.cat.categories
 
 
 ```python
@@ -4767,7 +4758,7 @@ df["grade"]
 
 
 
-#### 注意，这里是按生成类别时的顺序排序，不是按词汇排序
+注意，这里是按生成类别时的顺序排序，不是按词汇排序
 
 
 ```python
@@ -4861,7 +4852,7 @@ df.groupby('grade').size()
 
 
 
-## 可视化
+### 可视化
 https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#visualization
 
 
@@ -5482,9 +5473,9 @@ df.plot()
 
 ### 数据的输入输出
 
-### CSV
+CSV
 
-### 写入CSV文件
+写入CSV文件
 https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#io-store-in-csv
 
 
@@ -5492,7 +5483,7 @@ https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#io-store-in-csv
 df.to_csv('foo.csv')
 ```
 
-### 读取CSV文件数据
+读取CSV文件数据
 
 
 ```python
@@ -6025,17 +6016,17 @@ pd.read_csv('foo.csv')
 
 ### HDF5
 
-### 详见HDFStores文档
+详见HDFStores文档
 https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#io-hdf5
 
-#### 写入HDF5Store
+写入HDF5Store
 
 
 ```python
 df.to_hdf('foo.h5','df')
 ```
 
-#### 读取HDF5 Store
+读取HDF5 Store
 
 
 ```python
@@ -6504,17 +6495,17 @@ pd.read_hdf('foo.h5','df')
 
 
 
-#### 详见Excel文档
+详见Excel文档
 https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#io-excel
 
-#### 写入Excel文件
+写入Excel文件
 
 
 ```python
 df.to_excel('foo.xlsx',sheet_name='Sheet1')
 ```
 
-#### 读取Excel文件
+读取Excel文件
 
 
 ```python
@@ -7047,7 +7038,7 @@ pd.read_excel('foo.xlsx','Sheet1',index_col=None,na_values=['NA'])
 
 ### 各种坑（Gotchas）
 
-#### 执行某些操作，将触发异常，如
+执行某些操作，将触发异常，如
 
 
 ```python
@@ -7076,10 +7067,10 @@ if pd.Series([False,True,False]):
     ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
 
 
-#### 参阅比较操作文档，查看错误提示与解决方案
+参阅比较操作文档，查看错误提示与解决方案
 https://pandas.pydata.org/pandas-docs/stable/getting_started/basics.html#basics-compare
 
-#### 详见各种坑文档
+详见各种坑文档
 
 
 ```python
